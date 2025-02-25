@@ -1,5 +1,5 @@
-import { Priority, Status, Task } from '@/types/task';
-import { atom, useSetAtom } from 'jotai';
+import { Task } from '@/types/task';
+import { atom } from 'jotai';
 
 export type SortRule = { column: keyof Task | string; order: 'asc' | 'desc' };
 export const sortAtom = atom<SortRule[]>([{ column: 'id', order: 'desc' }]);

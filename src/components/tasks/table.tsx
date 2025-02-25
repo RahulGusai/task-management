@@ -30,8 +30,8 @@ export default function TaskTable() {
   const setSortRules = useSetAtom(sortAtom);
   const [filterRules] = useAtom(filterAtom);
   const [customFields] = useAtom(customFieldsAtom);
-  const [filterColumns, setFilterColumns] = useAtom(filterColumnsAtom);
-  const [selectedTasks, setSelectedTasks] = useAtom(selectedTasksAtom);
+  const setFilterColumns = useSetAtom(filterColumnsAtom);
+  const setSelectedTasks = useSetAtom(selectedTasksAtom);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -256,7 +256,7 @@ export default function TaskTable() {
               task.customFields?.[field.name] ?? field.defaultValue ?? 'N/A';
 
             return (
-              <div key={field.id} className="flex-1 flex items-center">
+              <div key={field.id} className="flex-1 flex items-center gap-2">
                 {field.type === CustomFieldType.Checkbox ? (
                   <Checkbox
                     className="text-blue-500 disabled:opacity-50"

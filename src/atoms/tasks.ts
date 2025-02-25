@@ -1,9 +1,14 @@
 import { atom } from 'jotai';
-import { Task, Priority, Status } from '@/types/task';
+import { Task } from '@/types/task';
 import { tasks } from '@/data/tasks';
 
+let storedTasks;
 let initialTasks: Task[] = [];
-const storedTasks = localStorage.getItem('tasks');
+
+if (typeof window !== 'undefined') {
+  storedTasks = localStorage.getItem('tasks');
+}
+
 if (storedTasks) {
   initialTasks = JSON.parse(storedTasks);
 } else {
